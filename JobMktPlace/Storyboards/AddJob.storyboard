@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="SVS-JS-bzi">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -31,7 +31,7 @@
                                                     <rect key="frame" x="16" y="6" width="343" height="31.5"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -56,7 +56,6 @@
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="AS0-HR-R6D">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
@@ -71,6 +70,29 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
+                            <tableViewSection headerTitle="Photo" id="RKy-9a-A8j">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="300" id="9vB-gY-CU4">
+                                        <rect key="frame" x="0.0" y="328" width="375" height="300"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9vB-gY-CU4" id="Ndz-wK-wNr">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="299.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7Di-gT-LcU">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="7Di-gT-LcU" firstAttribute="leading" secondItem="Ndz-wK-wNr" secondAttribute="leading" id="Sdb-Ng-K6B"/>
+                                                <constraint firstItem="7Di-gT-LcU" firstAttribute="top" secondItem="Ndz-wK-wNr" secondAttribute="top" id="TMm-u3-bdB"/>
+                                                <constraint firstAttribute="trailing" secondItem="7Di-gT-LcU" secondAttribute="trailing" id="X3i-9U-6T2"/>
+                                                <constraint firstAttribute="bottom" secondItem="7Di-gT-LcU" secondAttribute="bottom" id="uIF-eV-KkP"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
                         </sections>
                         <connections>
                             <outlet property="dataSource" destination="xZJ-gb-6oc" id="AJU-Mi-J2T"/>
@@ -78,20 +100,37 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Create Job" id="koF-MG-dYn">
-                        <barButtonItem key="leftBarButtonItem" title="cancel" id="7xr-Y7-adM">
-                            <connections>
-                                <action selector="cancel:" destination="xZJ-gb-6oc" id="sw6-ek-pKl"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="create" id="RAe-82-4jD">
-                            <connections>
-                                <action selector="create:" destination="xZJ-gb-6oc" id="VhA-pa-g4u"/>
-                            </connections>
-                        </barButtonItem>
+                        <leftBarButtonItems>
+                            <barButtonItem title="cancel" id="7xr-Y7-adM">
+                                <connections>
+                                    <action selector="cancel:" destination="xZJ-gb-6oc" id="sw6-ek-pKl"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="photo library" image="photo-picker" id="0dz-Vk-Eih">
+                                <connections>
+                                    <action selector="showPhotoLibrary:" destination="xZJ-gb-6oc" id="orh-9X-9yN"/>
+                                </connections>
+                            </barButtonItem>
+                        </leftBarButtonItems>
+                        <rightBarButtonItems>
+                            <barButtonItem title="create" id="RAe-82-4jD">
+                                <connections>
+                                    <action selector="create:" destination="xZJ-gb-6oc" id="VhA-pa-g4u"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="camera" id="EIx-vp-kLQ">
+                                <connections>
+                                    <action selector="showCamera:" destination="xZJ-gb-6oc" id="hkY-uc-eXE"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
+                        <outlet property="cameraButtonItem" destination="EIx-vp-kLQ" id="K3g-9Q-W72"/>
                         <outlet property="jobDescription" destination="AS0-HR-R6D" id="G9u-ch-BIN"/>
+                        <outlet property="jobImage" destination="7Di-gT-LcU" id="UwG-3S-RNZ"/>
                         <outlet property="jobTitle" destination="lF6-oH-DFl" id="BvG-SL-Vt2"/>
+                        <outlet property="photoLibraryButtonItem" destination="0dz-Vk-Eih" id="3Lh-AX-xgW"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1rw-RS-9Ze" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -117,4 +156,7 @@
             <point key="canvasLocation" x="-799" y="168"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="photo-picker" width="28" height="28"/>
+    </resources>
 </document>
